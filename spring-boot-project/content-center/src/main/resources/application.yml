@@ -6,7 +6,7 @@ spring:
     # 向Nacos注册服务的时候会使用这个名字
     name: content-center
   datasource:
-    url: jdbc:mysql://localhost:3306/content_center
+    url: jdbc:mysql://localhost:3306/content_center?serverTimezone=UTC&useSSL=false
     hikari:
       username: root
       password: 123456
