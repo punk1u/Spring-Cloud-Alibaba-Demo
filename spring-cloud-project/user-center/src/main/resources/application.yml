@@ -10,6 +10,15 @@ spring:
       discovery:
         # 指定nacos server的地址
         server-addr: localhost:8848
+        # 指定Nacos命名空间id
+        #namespace: namespace-id
+        # 指定Nacos集群名称
+        #cluster-name: HZ
+        # 指定Nacos元数据
+        #metadata:
+        #  instance: c
+        #  haha: hehe
+        #  version: 1
   datasource:
     url: jdbc:mysql://localhost:3306/user_center?serverTimezone=UTC&useSSL=false
     hikari:
