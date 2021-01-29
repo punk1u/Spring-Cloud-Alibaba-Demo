@@ -23,3 +23,10 @@ spring:
 #user-center:
 #  ribbon:
 #    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+
+
+# 配置Ribbon加载策略为饥饿加载，提高第一次调用用户中心的速度(默认为延迟加载)，
+# clients配置项如果有多个，可以使用逗号分割
+ribbon:
+  eager-load:
+    clients: user-center

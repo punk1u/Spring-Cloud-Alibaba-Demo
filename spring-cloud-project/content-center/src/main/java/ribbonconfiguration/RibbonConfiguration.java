@@ -38,8 +38,8 @@ public class RibbonConfiguration {
     /**
      * 自定义Ping的方式
      */
-    @Bean
+    /*@Bean
     public IPing ping(){
         return new PingUrl();
-    }
+    }*/
 }
