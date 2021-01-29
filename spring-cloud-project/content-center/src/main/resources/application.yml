@@ -19,3 +19,7 @@ spring:
       # <= 5.x: com.mysql.jdbc.Driver
       driver-class-name: com.mysql.cj.jdbc.Driver
 
+# 通过属性配置内容中心访问用户中心的Ribbon负载均衡规则，优先级比UserCenterRibbonConfiguration的代码配置更高
+user-center:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
