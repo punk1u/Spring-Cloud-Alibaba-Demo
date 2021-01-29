@@ -1,5 +1,5 @@
 server:
-  port: 8081
+  port: 8083
 
 spring:
   application:
@@ -13,7 +13,7 @@ spring:
         # 指定Nacos命名空间id
         #namespace: namespace-id
         # 指定Nacos集群名称
-        #cluster-name: HZ
+        cluster-name: BJ
         # 指定Nacos元数据
         #metadata:
         #  instance: c

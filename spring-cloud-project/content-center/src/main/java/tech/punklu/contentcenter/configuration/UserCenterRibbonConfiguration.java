@@ -12,6 +12,6 @@ import ribbonconfiguration.RibbonConfiguration;
  */
 
 @Configuration
-@RibbonClient(name = "user-center",configuration = RibbonConfiguration.class)
+@RibbonClient(name = "user-center",configuration = NacosSameClusterWeightedRule.class)
 public class UserCenterRibbonConfiguration {
 }
