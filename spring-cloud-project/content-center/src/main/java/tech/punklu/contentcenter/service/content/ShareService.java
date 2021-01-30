@@ -11,6 +11,7 @@ import tech.punklu.contentcenter.dao.content.ShareMapper;
 import tech.punklu.contentcenter.domain.dto.content.ShareDTO;
 import tech.punklu.contentcenter.domain.dto.user.UserDTO;
 import tech.punklu.contentcenter.domain.entity.content.Share;
+import tech.punklu.contentcenter.feignclient.UserCenterFeignClient;
 
 import java.util.List;
 
@@ -28,6 +29,9 @@ public class ShareService {
     @Autowired
     private DiscoveryClient discoveryClient;
 
+    @Autowired
+    private UserCenterFeignClient userCenterFeignClient;
+
     /**
      * 根据内容id获取分享内容的详情
      * @param id
@@ -41,7 +45,7 @@ public class ShareService {
 
         // 从ribbon负载均衡中心获得用户中心的地址
 
-        UserDTO userDTO = restTemplate.getForObject("http://user-center/users/{userId}",UserDTO.class,userId);
+        UserDTO userDTO = this.userCenterFeignClient.findById(userId);
         // 消息装备
         ShareDTO shareDTO = new ShareDTO();
         BeanUtils.copyProperties(share,shareDTO);
