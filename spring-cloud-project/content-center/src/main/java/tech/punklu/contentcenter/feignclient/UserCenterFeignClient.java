@@ -9,7 +9,8 @@ import tech.punklu.contentcenter.domain.dto.user.UserDTO;
 /**
  * 调用用户中心的Feign客户端代理类
  */
-@FeignClient(name = "user-center",configuration = UserCenterFeignConfiguration.class)
+//@FeignClient(name = "user-center",configuration = UserCenterFeignConfiguration.class)
+@FeignClient(name = "user-center")
 public interface UserCenterFeignClient {
 
     @GetMapping("/users/{id}")
