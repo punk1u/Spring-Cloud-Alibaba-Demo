@@ -31,3 +31,6 @@ spring:
 ribbon:
   eager-load:
     clients: user-center
+logging:
+  level:
+    tech.punklu.contentcenter.feignclient.UserCenterFeignClient: debug
