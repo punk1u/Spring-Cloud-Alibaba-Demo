@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 import tech.punklu.contentcenter.dao.content.ShareMapper;
 import tech.punklu.contentcenter.domain.dto.user.UserDTO;
 import tech.punklu.contentcenter.domain.entity.content.Share;
+import tech.punklu.contentcenter.feignclient.TestBaiduFeignClient;
 import tech.punklu.contentcenter.feignclient.UserCenterFeignClient;
 
 import java.util.Date;
@@ -59,5 +60,13 @@ public class TestController {
     @GetMapping("/testFeignParam")
     public UserDTO testFeignParam(UserDTO userDTO){
         return this.userCenterFeignClient.testFeignParam(userDTO);
+    }
+
+    @Autowired
+    private TestBaiduFeignClient testBaiduFeignClient;
+
+    @GetMapping("/baidu")
+    public String baidu(){
+        return this.testBaiduFeignClient.index();
     }
 }
