@@ -11,7 +11,7 @@ import tk.mybatis.spring.annotation.MapperScan;
 
 @MapperScan("tech.punklu.contentcenter.dao")
 @SpringBootApplication
-@EnableFeignClients(defaultConfiguration = UserCenterFeignConfiguration.class)
+@EnableFeignClients//(defaultConfiguration = UserCenterFeignConfiguration.class)
 public class ContentCenterApplication {
 
     public static void main(String[] args) {
