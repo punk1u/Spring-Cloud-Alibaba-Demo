@@ -11,6 +11,7 @@ import tk.mybatis.spring.annotation.MapperScan;
 
 @MapperScan("tech.punklu.contentcenter.dao")
 @SpringBootApplication
+// 想通过代码配置Feign全局配置，通过defaultConfiguration属性即可
 @EnableFeignClients//(defaultConfiguration = UserCenterFeignConfiguration.class)
 public class ContentCenterApplication {
 
