@@ -1,5 +1,5 @@
 server:
-  port: 8083
+  port: 8081
 
 spring:
   application:
@@ -13,7 +13,7 @@ spring:
         # 指定Nacos命名空间id
         #namespace: namespace-id
         # 指定Nacos集群名称
-        cluster-name: NJ
+        cluster-name: BJ
         # 指定Nacos元数据,Nacos元数据可用来控制版本，比如内容中心只能调用用户中心的v1版本，不能调用用户中心的v2版本
         #metadata:
         #  instance: c

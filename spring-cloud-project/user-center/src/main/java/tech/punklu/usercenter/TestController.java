@@ -27,4 +27,9 @@ public class TestController {
         this.userMapper.insert(user);
         return user;
     }
+
+    @GetMapping("/testFeignParam")
+    public User testFeignParam(User user){
+        return user;
+    }
 }

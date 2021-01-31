@@ -6,7 +6,9 @@ import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import tech.punklu.contentcenter.dao.content.ShareMapper;
+import tech.punklu.contentcenter.domain.dto.user.UserDTO;
 import tech.punklu.contentcenter.domain.entity.content.Share;
+import tech.punklu.contentcenter.feignclient.UserCenterFeignClient;
 
 import java.util.Date;
 import java.util.List;
@@ -46,5 +48,16 @@ public class TestController {
     public List<ServiceInstance> getInstances(){
         // 查询指定服务的所有实例的信息
         return this.discoveryClient.getInstances("user-center");
+    }
+
+
+
+
+    @Autowired
+    private UserCenterFeignClient userCenterFeignClient;
+
+    @GetMapping("/testFeignParam")
+    public UserDTO testFeignParam(UserDTO userDTO){
+        return this.userCenterFeignClient.testFeignParam(userDTO);
     }
 }
