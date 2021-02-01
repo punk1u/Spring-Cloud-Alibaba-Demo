@@ -61,6 +61,12 @@
             <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency>
 
+        <!-- 服务容错组件 -->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
+        </dependency>
+
     </dependencies>
 
     <dependencyManagement>
@@ -77,7 +83,7 @@
             <dependency>
                 <groupId>com.alibaba.cloud</groupId>
                 <artifactId>spring-cloud-alibaba-dependencies</artifactId>
-                <version>2.2.1.RELEASE</version>
+                <version>2.2.3.RELEASE</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>

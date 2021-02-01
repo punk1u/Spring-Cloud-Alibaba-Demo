@@ -11,6 +11,12 @@ spring:
         # 指定nacos server的地址
         server-addr: localhost:8848
         cluster-name: BJ
+    sentinel:
+      transport:
+        # 指定sentinel控制台的地址
+        dashboard: localhost:8080
+      # 配置web接口上下文不合并
+      web-context-unify: false
   datasource:
     url: jdbc:mysql://localhost:3306/content_center?serverTimezone=UTC&useSSL=false
     hikari:
@@ -47,3 +53,9 @@ feign:
       # 想要调用的微服务的名称,如果想配置全局的，只需要设置为default即可
       default:
         loggerLevel: full
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
