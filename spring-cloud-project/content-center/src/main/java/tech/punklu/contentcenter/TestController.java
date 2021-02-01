@@ -1,9 +1,11 @@
 package tech.punklu.contentcenter;
 
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import tech.punklu.contentcenter.dao.content.ShareMapper;
 import tech.punklu.contentcenter.domain.dto.user.UserDTO;
@@ -84,5 +86,12 @@ public class TestController {
     public String testB(){
         this.testService.common();
         return "test-b";
+    }
+
+    @GetMapping("/test-hot")
+    @SentinelResource("hot")
+    public String testHot(@RequestParam(required = false)String a,
+                          @RequestParam(required = false)String b){
+        return a + " " + b;
     }
 }
