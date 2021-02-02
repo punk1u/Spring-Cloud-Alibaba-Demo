@@ -1,6 +1,9 @@
 package tech.punklu.contentcenter;
 
 import com.alibaba.csp.sentinel.annotation.SentinelResource;
+import com.alibaba.csp.sentinel.slots.block.RuleConstant;
+import com.alibaba.csp.sentinel.slots.block.flow.FlowRule;
+import com.alibaba.csp.sentinel.slots.block.flow.FlowRuleManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
@@ -13,6 +16,7 @@ import tech.punklu.contentcenter.domain.entity.content.Share;
 import tech.punklu.contentcenter.feignclient.TestBaiduFeignClient;
 import tech.punklu.contentcenter.feignclient.UserCenterFeignClient;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -93,5 +97,24 @@ public class TestController {
     public String testHot(@RequestParam(required = false)String a,
                           @RequestParam(required = false)String b){
         return a + " " + b;
+    }
+
+    @GetMapping("/test-add-flow-rule")
+    public String testAddFlowRule(){
+        this.initFlowQpsRule();
+        return "success";
+    }
+    
+    private void initFlowQpsRule(){
+        List<FlowRule> rules = new ArrayList<>();
+        FlowRule rule = new FlowRule("/shares/1");
+        // 设置QPS阈值
+        rule.setCount(20);
+        // 设置阈值类型
+        rule.setGrade(RuleConstant.FLOW_GRADE_QPS);
+        rule.setLimitApp("default");
+        rules.add(rule);
+        FlowRuleManager.loadRules(rules);
+
     }
 }
