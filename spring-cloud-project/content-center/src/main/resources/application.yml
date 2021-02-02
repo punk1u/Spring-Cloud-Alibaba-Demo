@@ -56,6 +56,9 @@ feign:
       # 想要调用的微服务的名称,如果想配置全局的，只需要设置为default即可
       default:
         loggerLevel: full
+  sentinel:
+    # 为Feign整合Sentinel
+    enabled: true
 management:
   endpoints:
     web:

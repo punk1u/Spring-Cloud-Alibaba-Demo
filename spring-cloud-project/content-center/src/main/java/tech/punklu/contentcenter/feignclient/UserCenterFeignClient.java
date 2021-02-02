@@ -6,12 +6,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import tech.punklu.contentcenter.configuration.UserCenterFeignConfiguration;
 import tech.punklu.contentcenter.domain.dto.user.UserDTO;
+import tech.punklu.contentcenter.feignclient.fallback.UserCenterFeignClientFallback;
+import tech.punklu.contentcenter.feignclient.fallback.UserCenterFeignClientFallbackFactory;
 
 /**
  * 调用用户中心的Feign客户端代理类
  */
+
+/**
+ * fallback和fallbackFactory只应使用一个
+ */
 //@FeignClient(name = "user-center",configuration = UserCenterFeignConfiguration.class)
-@FeignClient(name = "user-center")
+//@FeignClient(name = "user-center",fallback = UserCenterFeignClientFallback.class)
+@FeignClient(name = "user-center",fallbackFactory = UserCenterFeignClientFallbackFactory.class)
 public interface UserCenterFeignClient {
 
     @GetMapping("/users/{id}")

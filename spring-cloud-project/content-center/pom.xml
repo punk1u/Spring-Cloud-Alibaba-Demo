@@ -71,6 +71,17 @@
 
     <dependencyManagement>
         <dependencies>
+
+            <!-- 单独引入Spring Cloud Alibaba Feign，解决在2.2.3版本中已解决，
+            但在2.2.0版本的Feign内的一个方法名拼写错误导致的服务无法启动问题，修复版本兼容问题 -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-openfeign-dependencies</artifactId>
+                <version>2.2.3.RELEASE</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
             <!--整合spring cloud-->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
