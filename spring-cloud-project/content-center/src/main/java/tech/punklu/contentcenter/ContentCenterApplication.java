@@ -1,5 +1,6 @@
 package tech.punklu.contentcenter;
 
+import com.alibaba.cloud.sentinel.annotation.SentinelRestTemplate;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
@@ -27,6 +28,7 @@ public class ContentCenterApplication {
      */
     @Bean
     @LoadBalanced
+    @SentinelRestTemplate
     public RestTemplate restTemplate(){
         return new RestTemplate();
     }
