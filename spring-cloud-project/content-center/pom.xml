@@ -92,6 +92,12 @@
                 <groupId>io.github.openfeign</groupId>
                 <artifactId>feign-httpclient</artifactId>
             </dependency>
+
+            <!-- Sentinel的监控功能需要用到actuator -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-actuator</artifactId>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
