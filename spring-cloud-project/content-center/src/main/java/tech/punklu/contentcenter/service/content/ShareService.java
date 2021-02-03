@@ -8,12 +8,14 @@ import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import tech.punklu.contentcenter.dao.content.ShareMapper;
+import tech.punklu.contentcenter.domain.dto.content.ShareAuditDTO;
 import tech.punklu.contentcenter.domain.dto.content.ShareDTO;
 import tech.punklu.contentcenter.domain.dto.user.UserDTO;
 import tech.punklu.contentcenter.domain.entity.content.Share;
 import tech.punklu.contentcenter.feignclient.UserCenterFeignClient;
 
 import java.util.List;
+import java.util.Objects;
 
 @Service
 @Slf4j
@@ -51,5 +53,23 @@ public class ShareService {
         BeanUtils.copyProperties(share,shareDTO);
         shareDTO.setWxNickname(userDTO.getWxNickname());
         return shareDTO;
+    }
+
+    public Share auditById(Integer id, ShareAuditDTO auditDTO) {
+        // 查询Share是否存在，不存在或者当前的audit_status != NOT_YET，那么抛异常
+        Share share = this.shareMapper.selectByPrimaryKey(id);
+        if (share == null){
+            throw new IllegalArgumentException("参数非法！该分享不存在！");
+        }
+        if (!Objects.equals("NOT_YET",share.getAuditStatus())){
+            throw new IllegalArgumentException("参数非法！该分享已审核过");
+        }
+        // 审核资源，将状态设为PASS/REJECT
+        share.setAuditStatus(auditDTO.getAuditStatusEnum().toString());
+        this.shareMapper.updateByPrimaryKey(share);
+        // 如果是PASS，那么为发布人添加积分
+        // 异步执行，缩短响应耗时
+        // TODO
+        return share;
     }
 }
