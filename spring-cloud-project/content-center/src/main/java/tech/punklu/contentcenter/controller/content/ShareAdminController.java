@@ -1,5 +1,6 @@
 package tech.punklu.contentcenter.controller.content;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import tech.punklu.contentcenter.domain.dto.content.ShareAuditDTO;
 import tech.punklu.contentcenter.domain.entity.content.Share;
@@ -9,6 +10,7 @@ import tech.punklu.contentcenter.service.content.ShareService;
 @RequestMapping("/admin/shares")
 public class ShareAdminController {
 
+    @Autowired
     private ShareService shareService;
 
     @PutMapping("/audit/{id}")
