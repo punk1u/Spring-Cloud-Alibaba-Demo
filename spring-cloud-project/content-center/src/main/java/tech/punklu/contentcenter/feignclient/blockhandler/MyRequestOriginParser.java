@@ -15,6 +15,7 @@ public class MyRequestOriginParser implements RequestOriginParser {
     public String parseOrigin(HttpServletRequest httpServletRequest) {
         // 从请求参数中获取名为origin的参数并返回
         // 如果获取不到origin参数，直接抛出异常
+        // 实际使用时，来源信息最好放在header中
         String origin = httpServletRequest.getParameter("origin");
         if (StringUtils.isBlank(origin)){
             throw new IllegalArgumentException("origin must be specified");
