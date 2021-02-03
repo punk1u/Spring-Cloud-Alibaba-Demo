@@ -13,8 +13,8 @@ spring:
         cluster-name: BJ
     sentinel:
       filter:
-        # 关闭掉对Spring MVC端点的保护
-        enabled: false
+        # 打开/关闭掉对Spring MVC端点的保护
+        enabled: true
       transport:
         # 指定sentinel控制台的地址
         dashboard: localhost:8080
