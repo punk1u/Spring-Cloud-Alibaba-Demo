@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.client.RestTemplate;
 import tech.punklu.contentcenter.dao.content.ShareMapper;
 import tech.punklu.contentcenter.domain.dto.content.ShareAuditDTO;
@@ -41,6 +42,7 @@ public class ShareService {
      * @param id
      * @return
      */
+    @Transactional(rollbackFor = Exception.class)
     public ShareDTO findById(Integer id){
         // 获取分享详情
         Share share = this.shareMapper.selectByPrimaryKey(id);
