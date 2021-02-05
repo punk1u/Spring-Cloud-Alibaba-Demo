@@ -13,6 +13,11 @@ spring:
         locator:
           # 让Gateway通过服务发现组件找到其他的微服务
           enabled: true
+      routes:
+        - id: between_route
+          uri: lb://user-center
+          predicates:
+            - TimeBetween=上午9:00,下午11:00
 management:
   endpoints:
     web:
