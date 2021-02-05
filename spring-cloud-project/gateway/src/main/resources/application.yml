@@ -21,6 +21,7 @@ spring:
           # 添加一个向发往用户中心的请求上添加Header项的拦截器
           filters:
             - AddRequestHeader=X-Request-Foo, Bar
+            - PreLog=a,b
 management:
   endpoints:
     web:
