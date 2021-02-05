@@ -17,7 +17,10 @@ spring:
         - id: between_route
           uri: lb://user-center
           predicates:
-            - TimeBetween=上午9:00,下午11:00
+            - TimeBetween=上午0:00,下午11:59
+          # 添加一个向发往用户中心的请求上添加Header项的拦截器
+          filters:
+            - AddRequestHeader=X-Request-Foo, Bar
 management:
   endpoints:
     web:
