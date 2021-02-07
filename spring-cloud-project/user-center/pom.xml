@@ -63,6 +63,12 @@
             <version>2.2.0</version>
         </dependency>
 
+        <!-- 添加Nacos配置管理依赖 -->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+        </dependency>
+
     </dependencies>
 
     <dependencyManagement>
