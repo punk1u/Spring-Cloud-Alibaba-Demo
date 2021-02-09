@@ -13,11 +13,14 @@ spring:
         file-extension: yaml
         shared-configs[0]:
           data-id: common.yaml
+          group: common
           refresh: true
         shared-configs[1]:
           data-id: spring-cloud-common.yaml
+          group: spring-cloud-common
           refresh: true
         extension-configs[0]:
           data-id: content-center.yaml
+          group: content-center
           refresh: true
 
