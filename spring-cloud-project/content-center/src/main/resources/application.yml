@@ -2,9 +2,6 @@ server:
   port: 8082
 
 spring:
-  application:
-    # 向Nacos注册服务的时候会使用这个名字
-    name: content-center
   cloud:
     nacos:
       discovery:

@@ -1,0 +1,23 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    # 向Nacos注册服务的时候会使用这个名字
+    name: content-center
+  cloud:
+    nacos:
+      config:
+        server-addr: 127.0.0.1:8848
+        namespace: 7cf9b1f3-3c42-4e4a-91e9-4d1b68a78a98
+        file-extension: yaml
+        shared-configs[0]:
+          data-id: common.yaml
+          refresh: true
+        shared-configs[1]:
+          data-id: spring-cloud-common.yaml
+          refresh: true
+        extension-configs[0]:
+          data-id: content-center.yaml
+          refresh: true
+
