@@ -1,19 +1,25 @@
 package tech.punklu.usercenter.controller.user;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import tech.punklu.usercenter.domain.dto.user.UserWithJwtTokenRespDTO;
 import tech.punklu.usercenter.domain.entity.user.User;
 import tech.punklu.usercenter.service.user.UserService;
+import tech.punklu.usercenter.util.JWTOperater;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/users")
+@Slf4j
 public class UserController {
 
     @Autowired
     private UserService userService;
+
+
 
 
     /**
@@ -24,5 +30,16 @@ public class UserController {
     @GetMapping("/{id}")
     public User findById(@PathVariable Integer id){
         return this.userService.findById(id);
+    }
+
+    /**
+     * 用户登录
+     * @param loginUser
+     * @return
+     */
+    @PostMapping("/login")
+    public String login(@RequestBody  User loginUser){
+        String userToken = this.userService.login(loginUser);
+        return userToken;
     }
 }

@@ -29,4 +29,8 @@ spring:
       driver-class-name: com.mysql.cj.jdbc.Driver
 rocketmq:
   name-server: 127.0.0.1:9876
-  
+
+JWT_KEY:
+  punk1uJWTTokenSecret
+JWT_EXPIRE_TIME:
+  3600000
