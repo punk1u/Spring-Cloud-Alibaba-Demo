@@ -3,6 +3,7 @@ package tech.punklu.usercenter.controller.user;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import tech.punklu.usercenter.auth.CheckLogin;
 import tech.punklu.usercenter.domain.entity.user.User;
 import tech.punklu.usercenter.service.user.UserService;
 
@@ -23,6 +24,7 @@ public class UserController {
      * @return
      */
     @GetMapping("/{id}")
+    @CheckLogin
     public User findById(@PathVariable Integer id){
         return this.userService.findById(id);
     }
