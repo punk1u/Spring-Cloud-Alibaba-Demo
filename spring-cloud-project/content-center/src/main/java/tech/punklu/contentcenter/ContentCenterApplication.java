@@ -10,6 +10,8 @@ import org.springframework.web.client.RestTemplate;
 import tech.punklu.contentcenter.configuration.UserCenterFeignConfiguration;
 import tk.mybatis.spring.annotation.MapperScan;
 
+import java.util.Collections;
+
 @MapperScan("tech.punklu.contentcenter.dao")
 @SpringBootApplication
 // 想通过代码配置Feign全局配置，通过defaultConfiguration属性即可
@@ -30,6 +32,11 @@ public class ContentCenterApplication {
     @LoadBalanced
     @SentinelRestTemplate
     public RestTemplate restTemplate(){
-        return new RestTemplate();
+        // 声明RestTemplate实例并添加全局拦截器处理类
+        RestTemplate template = new RestTemplate();
+        template.setInterceptors(
+                Collections.singletonList(new RestTemplateTokenRelayInterceptor())
+        );
+        return template;
     }
 }
