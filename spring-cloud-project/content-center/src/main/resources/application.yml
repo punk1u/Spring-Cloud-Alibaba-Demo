@@ -53,6 +53,7 @@ feign:
       # 想要调用的微服务的名称,如果想配置全局的，只需要设置为default即可
       default:
         loggerLevel: full
+        # 配置全局的Feign拦截器配置类，用于在微服务间传递token
         requestInterceptors:
           - tech.punklu.contentcenter.feignclient.interceptor.TokenRelayRequestInterceptor
   sentinel:
