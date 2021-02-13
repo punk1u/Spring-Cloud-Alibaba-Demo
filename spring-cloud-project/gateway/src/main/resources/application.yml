@@ -18,6 +18,7 @@ spring:
           uri: lb://user-center
           predicates:
             - TimeBetween=上午0:00,下午11:59
+            # 配置Gateway要映射到用户中心的uri的地址前缀
             - Path=/users/**
           # 添加一个向发往用户中心的请求上添加Header项的拦截器
           filters:
@@ -27,6 +28,7 @@ spring:
           uri: lb://content-center
           predicates:
             - TimeBetween=上午0:00,下午11:59
+            # 配置Gateway要映射到内容中心的uri的地址前缀
             - Path=/shares/**,/admin/**
           # 添加一个向发往内容中心的请求上添加Header项的拦截器
           filters:
